@@ -12,6 +12,12 @@
       </div>
     </div>
     -->
+    <br>
+    <div style="font-size:0.8em;font-style:oblique;">小さなことから自動化しよう。</div>
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
 </template>
 
@@ -43,12 +49,12 @@
   #logo {
     height: auto;
     margin-bottom: 20px;
-    width: 130px;
+    width: 160px;
   }
 
   .version{
     text-align: right;
-    font-size: 1.1em;
+    font-size: 1.0em;
   }
 
   .items { margin-top: 8px; }

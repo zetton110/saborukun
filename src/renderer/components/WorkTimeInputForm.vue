@@ -5,13 +5,13 @@
     </div>
     <br>
     <div>
-      <h3>対象</h3>
+      <h3>入力内容</h3>
     </div>
     <div>
       <p>
-          <input type="checkbox" id="chkWorkTimeDiff" v-model="modeInputWorkTimeDiff"><label for="chkWorkTimeDiff">勤務時間差理由</label>
-          <input type="checkbox" id="chkStartTimeDiff" v-model="modeInputStartTimeDiff"><label for="chkStartTimeDiff">始業時間差理由</label>
-          <input type="checkbox" id="chkEndTimeDiff" v-model="modeInputEndTimeDiff"><label for="chkEndTimeDiff">終業時間差理由</label>
+          <input type="checkbox" id="chkWorkTimeDiff" v-model="modeInputWorkTimeDiff"><label for="chkWorkTimeDiff" class="input-content-label">勤務時間差理由</label>
+          <input type="checkbox" id="chkStartTimeDiff" v-model="modeInputStartTimeDiff"><label for="chkStartTimeDiff" class="input-content-label">始業時間差理由</label>
+          <input type="checkbox" id="chkEndTimeDiff" v-model="modeInputEndTimeDiff"><label for="chkEndTimeDiff" class="input-content-label">終業時間差理由</label>
       </p>
     </div>
     <br>
@@ -20,7 +20,7 @@
           <div>
               <label>勤務時間差理由:</label>
               <br>
-              <textarea v-bind:class="{ 'error': (reasonForWorkTimeDiff === '')}"  v-model="reasonForWorkTimeDiff" placeholder="edit me" class="reason-area"></textarea>
+              <textarea v-bind:class="{ 'error': (reasonForWorkTimeDiff === '')}"  v-model="reasonForWorkTimeDiff" class="reason-area"></textarea>
           </div>
           <div v-if="histReasonsForWT.length === 0">
             （ 履歴なし ）
@@ -35,7 +35,7 @@
           <div>
               <label>始業時間差理由:</label>
               <br>
-              <textarea v-bind:class="{ 'error': (reasonForStartTimeDiff === '')}" v-model="reasonForStartTimeDiff" placeholder="edit me" class="reason-area"></textarea>
+              <textarea v-bind:class="{ 'error': (reasonForStartTimeDiff === '')}" v-model="reasonForStartTimeDiff" class="reason-area"></textarea>
           </div>
           <div v-if="histReasonsForST.length === 0">
             （ 履歴なし ）
@@ -50,7 +50,7 @@
           <div>
               <label>終業時間差理由:</label>
               <br>
-              <textarea v-bind:class="{ 'error': (reasonForEndTimeDiff === '')}" v-model="reasonForEndTimeDiff" placeholder="edit me" class="reason-area"></textarea>
+              <textarea v-bind:class="{ 'error': (reasonForEndTimeDiff === '')}" v-model="reasonForEndTimeDiff" class="reason-area"></textarea>
           </div>
           <div v-if="histReasonsForET.length === 0">
             （ 履歴なし ）
@@ -62,17 +62,29 @@
           </div>
       </div>
     </div>
-    <div style="color:red;">
+    <div class="error-text">
       <br>
       <div v-if="(modeInputWorkTimeDiff === true) && (reasonForWorkTimeDiff === '')">【ERROR】 勤務時間差理由を入力してください。</div>
       <div v-if="(modeInputStartTimeDiff === true) && (reasonForStartTimeDiff === '')">【ERROR】 始業時間差理由を入力してください。</div>
       <div v-if="(modeInputEndTimeDiff === true) && (reasonForEndTimeDiff === '')">【ERROR】 終業時間差理由を入力してください。</div>
+      <div v-if="!(modeInputWorkTimeDiff || modeInputStartTimeDiff || modeInputEndTimeDiff)">【ERROR】 入力内容を選択してください。</div>
+
     </div>
     <br>
-    <div>
-      <button @click="save">申請</button>
+    <div v-if="modeInputWorkTimeDiff || modeInputStartTimeDiff || modeInputEndTimeDiff">
+      <button 
+        class="square_btn"
+        @click="save"
+        v-bind:disabled="
+        ((modeInputWorkTimeDiff === true) && (reasonForWorkTimeDiff === '') ||
+        (modeInputStartTimeDiff === true) && (reasonForStartTimeDiff === '') ||
+        (modeInputEndTimeDiff === true) && (reasonForEndTimeDiff === ''))">
+        入力開始
+      </button>
+      <!--
       <button @click="deleteAll">全削除</button>
       <button @click="findAll">検索</button>
+      -->
     </div>
   </div>
 </template>
@@ -167,4 +179,26 @@
   .error{
     background-color: rgb(255, 129, 129);
   }
+  .input-content-label{
+    margin-right: 16px;
+  }
+  .error-text{
+    color: red;
+    font-size: 0.9em;
+  }
+  .square_btn{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    position:fixed;
+    bottom: 96px;
+}
+.square_btn:disabled{
+    background: #424a5a;/*ボタン色*/
+}
 </style>

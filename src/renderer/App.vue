@@ -52,7 +52,7 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    width: 180px;
+    width: 200px;
   }
 
   .right-side {
