@@ -39,7 +39,7 @@
         rgba(134, 131, 131, 0.9) 100%
       );
     height: 100vh;
-    padding: 40px 40px;
+    padding: 16px 40px;
     width: 100vw;
   }
 
@@ -52,7 +52,7 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    width: 200px;
+    min-width: 208px;
   }
 
   .right-side {

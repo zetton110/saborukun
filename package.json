@@ -1,6 +1,6 @@
 {
-  "name": "overtime-apply-automation",
-  "version": "0.0.0",
+  "name": "saborukun",
+  "version": "1.0.0",
   "author": "k.itoh <locolv.kohe@gmail.com>",
   "description": "残業申請自動入力プログラム",
   "license": null,
@@ -19,13 +19,16 @@
     "postinstall": "npm run lint:fix"
   },
   "build": {
-    "productName": "overtime-apply-automation",
+    "productName": "村田さぼるくん",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"
     },
     "files": [
       "dist/electron/**/*"
+    ],
+    "extraResources": [
+      "static/**"
     ],
     "dmg": {
       "contents": [

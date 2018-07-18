@@ -13,7 +13,7 @@
     </div>
     -->
     <br>
-    <div style="font-size:0.8em;font-style:oblique;">小さなことから自動化しよう。</div>
+    <div style="font-size:0.8em;font-style:oblique;">定常業務を自動化しよう。</div>
     <br>
     <br>
     <br>

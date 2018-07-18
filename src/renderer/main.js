@@ -10,6 +10,7 @@ if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 Vue.prototype.$db = db
+Vue.prototype.$exe = (process.env.NODE_ENV === 'development' ? require('path').join(__dirname, '../../bin/zangyo.exe') : require('path').join(process.resourcesPath, 'bin/zangyo.exe'))
 
 /* eslint-disable no-new */
 new Vue({
